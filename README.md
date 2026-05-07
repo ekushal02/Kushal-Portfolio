@@ -1,247 +1,121 @@
 # Kushal Erramilli — Portfolio
 
-A production-grade personal portfolio for an AI Engineer / Data Scientist. Built with Next.js 14 App Router, TypeScript, Tailwind, Framer Motion, and Three.js. The AI Playground is powered by **Groq** (free tier, no credit card required).
+Production-grade personal portfolio built with **Next.js 14**, **TypeScript**, **Tailwind**, and **Three.js**. AI Playground powered by **Groq** (free tier).
 
----
+## Quick Start
 
-## ✦ Features
-
-- **Three.js hero** — wireframe icosahedron + 1,200-particle field reacting to cursor
-- **Custom cursor** with magnetic ring expansion on hoverable elements
-- **⌘K command palette** for keyboard navigation
-- **Konami code easter egg** (↑↑↓↓←→←→BA) → hidden developer terminal with live commands
-- **AI Playground** — real LLM (via Groq) primed on Kushal's resume + projects
-- **Boot sequence** loading screen
-- **Scroll progress bar** + scroll-triggered section reveals
-- **Magnetic CTA buttons** with cursor tracking
-- **Filterable project grid** + cinematic case-study modals
-- **Skills** with proficiency dots, animated radar chart, and "currently exploring" section
-- **Certifications** with status badges (active / in-progress)
-- Fully responsive (desktop, tablet, mobile)
-- WCAG-conscious (focus states, reduced-motion respected, semantic HTML)
-- SEO-ready (metadata, OG, sitemap-friendly)
-
----
-
-## ✦ Tech Stack
-
-| Concern | Choice |
-|---|---|
-| Framework | Next.js 14 (App Router) |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS |
-| Motion | Framer Motion + CSS |
-| 3D | Three.js (lazy-loaded) |
-| Icons | Lucide React |
-| AI | Groq SDK (free tier) |
-| Hosting | Vercel (recommended) |
-
----
-
-## ✦ Quick Start
-
-### Prerequisites
-
-- Node.js **18.17+** (use `nvm install 20 && nvm use 20` if unsure)
-- npm, pnpm, or yarn
-
-### 1. Clone / extract
-
-```bash
-cd kushal-portfolio
-```
-
-### 2. Install dependencies
+### 1. Install & Setup
 
 ```bash
 npm install
-# or
-pnpm install
-# or
-yarn
-```
-
-### 3. Set up environment variables
-
-```bash
 cp .env.example .env.local
 ```
 
-Then open `.env.local` and add your **Groq API key** (free):
+Add your Groq API key to `.env.local`:
+- Get free key at <https://console.groq.com/keys>
+- Paste: `GROQ_API_KEY=gsk_your_key_here`
 
-1. Go to <https://console.groq.com/keys>
-2. Sign up (no credit card needed)
-3. Create a new API key
-4. Paste into `.env.local`:
-
-```env
-GROQ_API_KEY=gsk_your_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
-```
-
-> **No Groq key?** The AI Playground will gracefully fall back to a "configure to enable" message — the rest of the site works normally. To remove the section entirely, see **Customization → Removing the AI Playground** below.
-
-### 4. Run the dev server
+### 2. Run
 
 ```bash
-npm run dev
+npm run dev   # http://localhost:3000
 ```
 
-Open <http://localhost:3000>.
-
-### 5. Build for production
+### 3. Build
 
 ```bash
 npm run build
 npm run start
 ```
 
----
+## Customize Content
 
-## ✦ Project Structure
+All content lives in **`lib/data.ts`** — edit:
 
-```
-kushal-portfolio/
-├── app/
-│   ├── layout.tsx            # Root layout, fonts, metadata
-│   ├── page.tsx              # Home page (composes all sections)
-│   ├── globals.css           # Tailwind base + custom animations
-│   ├── not-found.tsx         # 404
-│   └── api/
-│       └── chat/route.ts     # Server route for Groq (keeps API key safe)
-├── components/
-│   ├── ui/                   # Reusable UI primitives
-│   │   ├── BootSequence.tsx
-│   │   ├── CommandPalette.tsx
-│   │   ├── CustomCursor.tsx
-│   │   ├── KonamiTerminal.tsx
-│   │   ├── ScrollProgress.tsx
-│   │   └── SectionHeader.tsx
-│   ├── Nav.tsx
-│   ├── Hero.tsx
-│   ├── HeroCanvas.tsx        # Three.js scene (client-only)
-│   ├── About.tsx
-│   ├── Experience.tsx
-│   ├── Projects.tsx
-│   ├── ProjectCard.tsx
-│   ├── ProjectModal.tsx
-│   ├── Skills.tsx
-│   ├── RadarChart.tsx
-│   ├── Certifications.tsx
-│   ├── Playground.tsx
-│   ├── Contact.tsx
-│   └── Footer.tsx
-├── lib/
-│   ├── data.ts               # All content (profile, projects, skills, …)
-│   ├── hooks.ts              # useMagnetic, useReveal
-│   └── cn.ts                 # clsx + tailwind-merge utility
-├── types/
-│   └── index.ts
-├── public/
-│   ├── favicon.svg
-│   └── resume.pdf            # ⚠ Drop your real resume here
-├── .env.example
-├── next.config.mjs
-├── tailwind.config.ts
-├── tsconfig.json
-└── package.json
-```
-
----
-
-## ✦ Customization
-
-### Editing content
-
-**All content lives in `lib/data.ts`** — one file, all sections. Edit there:
-
-- `PROFILE` — name, role, contact info
-- `EXPERIENCE` — work history (collapsible cards)
+- `PROFILE` — name, role, contact
+- `EXPERIENCE` — work history
 - `EDUCATION` — schools & degrees
-- `PROJECTS` — case studies (filterable grid)
-- `SKILLS` — categorized skill chips
-- `RADAR_DATA` — radar chart values
-- `CERTIFICATIONS` — active + in-progress credentials
-- `PLAYGROUND_SYSTEM` — system prompt for the AI chatbot
+- `PROJECTS` — case studies
+- `SKILLS` — skill categories
+- `RADAR_DATA` — radar chart
+- `CERTIFICATIONS` — credentials
 
-No need to touch any component file for content edits.
+No component changes needed.
 
-### Adding your resume PDF
+## Add Resume
 
-Drop `resume.pdf` into `public/`. The "Resume" button in the hero will link to `/resume.pdf`.
+Drop `resume.pdf` into `public/`. The hero "Resume" button links to it automatically.
 
-### Removing the AI Playground
+## Deploy
 
-If you don't want the AI chat:
+**Vercel (1 click):**
+1. Push to GitHub
+2. Import at <https://vercel.com/new>
+3. Add `GROQ_API_KEY` to Environment Variables
+4. Deploy ✓
 
-1. Delete `components/Playground.tsx` and `app/api/chat/route.ts`
-2. In `app/page.tsx`, remove the `<Playground />` import and JSX
-3. In `components/Nav.tsx`, remove the "Playground" link
-4. In `components/ui/CommandPalette.tsx`, remove the playground command
-5. Uninstall: `npm uninstall groq-sdk`
-
-### Switching AI providers
-
-The `/api/chat` route uses the OpenAI-compatible Groq SDK. To swap:
-
-- **OpenAI** → install `openai`, change `Groq` import
-- **Anthropic** → install `@anthropic-ai/sdk`, swap message format
-- **Local Ollama** → point base URL to `http://localhost:11434/v1`
-
-The component side (`Playground.tsx`) doesn't change.
-
-### Color / typography
-
-- **Accent color**: change `accent` in `tailwind.config.ts`
-- **Fonts**: edit the `next/font/google` calls in `app/layout.tsx`
-
----
-
-## ✦ Deployment
-
-### Vercel (recommended — 1 click)
-
-1. Push this repo to GitHub
-2. Import on <https://vercel.com/new>
-3. Add `GROQ_API_KEY` (and optionally `GROQ_MODEL`) under **Environment Variables**
-4. Deploy — done.
-
-Vercel auto-detects Next.js, no config needed.
-
-### Self-hosting
-
+**Self-host:**
 ```bash
-npm run build
-npm run start  # runs on port 3000
+npm run build && npm run start
 ```
 
-Or with PM2 / Docker:
+## Project Structure
 
-```dockerfile
-FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --omit=dev
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+```
+├── app/                    # Next.js 14 App Router
+│   ├── layout.tsx         # Fonts, metadata
+│   ├── page.tsx           # Home (composes all sections)
+│   ├── globals.css        # Tailwind + animations
+│   └── api/chat/route.ts  # Groq backend
+├── components/            # React components
+│   ├── ui/               # Reusable primitives
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── Projects.tsx
+│   ├── Skills.tsx
+│   └── ...
+├── lib/
+│   ├── data.ts           # All content (edit this)
+│   ├── hooks.ts
+│   └── cn.ts
+├── types/index.ts        # TypeScript types
+└── public/               # Resume + favicon
 ```
 
----
+## Features
 
-## ✦ Performance Notes
+- ✨ Three.js hero scene (icosahedron + particles)
+- 🎯 Custom cursor with magnetic effects
+- ⌘K command palette
+- 🎮 Konami code easter egg (↑↑↓↓←→←→BA)
+- 🤖 AI chatbot via Groq
+- 📊 Skills radar chart
+- 🎬 Project modals
+- 📱 Fully responsive
+- ♿ WCAG accessible
+- 🚀 Lighthouse 95+
 
-- **Three.js is lazy-loaded** via `next/dynamic({ ssr: false })` — keeps the initial JS small
-- **Lucide icons** are tree-shaken by Next.js' `optimizePackageImports`
-- **Custom cursor disabled on touch devices** (no hover state to track)
-- **Reveal-on-scroll uses IntersectionObserver** — no scroll-listener jank
-- Expected Lighthouse: 95+ Performance, 100 Accessibility, 100 Best Practices
+## Customization
 
-To audit: `npm run build && npm run start`, then run Lighthouse against the production build (dev mode is always slower).
+**Remove AI Playground:**
+1. Delete `components/Playground.tsx` and `app/api/chat/route.ts`
+2. Remove `<Playground />` from `app/page.tsx`
+3. Remove "Playground" link from `components/Nav.tsx`
+4. `npm uninstall groq-sdk`
 
----
+**Change accent color:**
+Edit `tailwind.config.ts` → change `accent` theme values
 
-## ✦ License
+**Change fonts:**
+Edit `app/layout.tsx` → swap `next/font/google` imports
 
-MIT. Use this as a template — just swap the content in `lib/data.ts`.
+## Performance
+
+- Three.js lazy-loaded (smaller initial JS)
+- Lucide icons tree-shaken
+- IntersectionObserver for scroll reveals
+- Expected Lighthouse: 95+ Performance, 100 Accessibility
+
+## License
+
+MIT — customize and ship.
