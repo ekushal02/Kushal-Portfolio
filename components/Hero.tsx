@@ -153,10 +153,8 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 opacity-0 animate-fade-in"
         style={{ animationDelay: "1400ms" }}
       >
-        <span className="font-mono text-[10px] tracking-[0.3em] uppercase">
-          scroll
-        </span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
+        
+        
       </div>
     </section>
   );
