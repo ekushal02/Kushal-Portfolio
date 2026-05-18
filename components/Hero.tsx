@@ -103,7 +103,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="mt-12 flex flex-wrap gap-3 opacity-0 animate-fade-in"
+          className="mt-12 flex flex-col sm:flex-row flex-wrap gap-3 opacity-0 animate-fade-in"
           style={{ animationDelay: "950ms" }}
         >
           <a
