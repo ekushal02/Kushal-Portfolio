@@ -46,7 +46,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
       <HeroCanvas />
 
@@ -54,7 +54,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_black_75%)] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-5 w-full pt-32 pb-20">
+      <div className="relative mx-auto max-w-6xl px-5 w-full py-24 md:py-28">
         {/* status pill */}
         <div
           className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 mb-8 opacity-0 animate-fade-in"
@@ -69,7 +69,7 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="font-display text-[clamp(2.8rem,9vw,7.5rem)] leading-[0.95] tracking-tight text-white">
+        <h1 className="font-display text-[clamp(2.8rem,7vw,6.5rem)] leading-[0.95] tracking-tight text-white">
           <span
             className="block opacity-0 animate-fade-in"
             style={{ animationDelay: "300ms" }}
@@ -138,7 +138,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl opacity-0 animate-fade-in"
+          className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl opacity-0 animate-fade-in"
           style={{ animationDelay: "1100ms" }}
         >
           <Meta label="Based in" value="Baltimore, MD" />
