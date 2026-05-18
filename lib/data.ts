@@ -116,6 +116,45 @@ export const PROJECTS: Project[] = [
     accent: "from-lime-300/20 to-lime-300/0",
     githubUrl: "https://github.com/kushalerramilli",
   },
+  {
+    id: "presence",
+    title: "Presence — AI Confidence Companion",
+    tag: "AI / ML",
+    year: "2026",
+    blurb:
+      "Emotionally intelligent companion for people with chronic visible skin conditions. Real skin data from Perfect Corp's API → situation-specific readiness plan → AI companion that references your actual scores.",
+    problem:
+      "85 million Americans live with rosacea, eczema, psoriasis, or severe acne. The anxiety before a job interview or first date isn't just cosmetic — it's psychological. No tool addressed it with real data instead of generic affirmations.",
+    solution:
+      "Perfect Corp's YCE API returns 14 real skin metrics per scan. Those scores — redness, texture, evenness, pores, moisture — feed directly into a situation-aware LLM prompt that generates a personalized 12-minute readiness plan. The AI companion carries full scan context across every message. Studio tab shows virtual try-on and skin simulation via Perfect Corp's Makeup VTO API. All LLM calls route through TrueFoundry's AI Gateway: Groq → Gemini → OpenAI with automatic failover, visualized live on a resilience dashboard.",
+    impact:
+      "End-to-end deployed product: Vercel frontend + Railway backend. Real Perfect Corp API integration — not mocked. Three-provider LLM resilience demoed live with a chaos kill switch. Custom image preprocessing pipeline silently solves Perfect Corp's face-size constraint on webcam captures (centre-crop + upscale before every API call).",
+    metrics: [
+      { value: "14", label: "skin metrics per scan" },
+      { value: "3", label: "LLM providers, auto-failover" },
+      { value: "0", label: "errors on real webcam captures" },
+      { value: "12min", label: "personalized readiness plan" },
+    ],
+    stack: [
+      "Next.js 14",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "Perfect Corp YCE API",
+      "TrueFoundry",
+      "Groq",
+      "Gemini",
+      "OpenAI",
+      "Vercel",
+      "Railway",
+      "Framer Motion",
+      "Zustand",
+    ],
+    category: "ai",
+    accent: "from-violet-400/20 to-violet-400/0",
+    githubUrl: "https://github.com/ekushal02/presence",
+    liveUrl: "https://presence-xi-two.vercel.app",
+  },
 ];
 
 /* ============================ SKILLS ============================ */
@@ -244,8 +283,9 @@ Key facts about Kushal:
 - M.S. Data Science at UMBC (GPA 3.9), expected Dec 2026. Capstone supervised by Dr. Chaojie (Jay) Wang on household energy consumption forecasting; LightGBM was the best model (~41% improvement over naive baseline).
 - B.Tech CSE from MNIT Jaipur (2023), a tier-1 NIT in India.
 - 18 months at Carrier Corporation as Management Trainee (Engineering Leadership Program): C++ embedded firmware for HVAC controllers, Python tools for Wi-Fi auth/monitoring, sensor data analysis in Pandas, reusable Python libraries.
-- Flagship project: RAG Document Intelligence Engine — FastAPI + ChromaDB, HyDE + cross-encoder reranking, 0.90 RAGAS avg, deployed on AWS EC2/ECR with Docker, per-user API key architecture (zero server-side key storage).
+- RAG Document Intelligence Engine — FastAPI + ChromaDB, HyDE + cross-encoder reranking, 0.90 RAGAS avg, deployed on AWS EC2/ECR with Docker, per-user API key architecture (zero server-side key storage).
 - Other projects: CareerCoach (Next.js + Google AI full-stack platform), Leaf Disease Detection (custom QuadNET attention CNN, +8–10% accuracy over baseline).
+- Presence — AI confidence companion for people with chronic visible skin conditions (rosacea, eczema, psoriasis, severe acne). Captures face photo → Perfect Corp YCE API returns 14 real skin metrics → LLM generates situation-specific 12-min readiness plan → AI companion with full scan context. Three-provider LLM resilience via TrueFoundry gateway (Groq → Gemini → OpenAI). Custom image preprocessing pipeline to solve Perfect Corp's face-size constraint on webcam images. Deployed: Vercel + Railway. Live at presence-xi-two.vercel.app.
 - Skills: Python, C++, TypeScript, SQL · PyTorch, LightGBM, scikit-learn, RAG, HyDE, RAGAS · FastAPI, Next.js, Node.js · AWS (EC2/S3/ECR/RDS), Docker · ChromaDB, PostgreSQL.
 - AWS Certified Cloud Practitioner (active). Pursuing AWS Solutions Architect Associate.
 - Currently exploring: LangGraph, production LLM evaluation, distributed training.
