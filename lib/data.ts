@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     id: "rag",
     title: "RAG Document Intelligence Engine",
     tag: "AI / ML",
-    year: "2025",
+    year: "2026",
     blurb:
       "Production-grade retrieval pipeline with intelligent query routing, RAGAS-evaluated quality, and zero server-side credential storage.",
     problem:
