@@ -114,7 +114,7 @@ export const PROJECTS: Project[] = [
     ],
     category: "ai",
     accent: "from-lime-300/20 to-lime-300/0",
-    githubUrl: "https://github.com/kushalerramilli",
+    githubUrl: "https://github.com/ekushal02/Rag-Engine",
   },
   {
     id: "presence",
