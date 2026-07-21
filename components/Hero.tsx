@@ -144,7 +144,13 @@ export default function Hero() {
           <Meta label="Based in" value="Baltimore, MD" />
           <Meta label="Studying at" value="UMBC · MS Data Science" />
           <Meta label="GPA" value="3.9 / 4.0" />
-          <Meta label="Last updated" value="May 2026" />
+          <Meta
+            label="Last updated"
+            value={new Date().toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+            })}
+          />
         </div>
       </div>
 

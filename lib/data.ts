@@ -89,18 +89,18 @@ export const PROJECTS: Project[] = [
     tag: "AI / ML",
     year: "2026",
     blurb:
-      "Production-grade retrieval pipeline with intelligent query routing, RAGAS-evaluated quality, and zero server-side credential storage.",
+      "Retrieval pipeline with intelligent query routing, per-request API-key architecture, and RAGAS-evaluated quality.",
     problem:
       "Naive RAG breaks on complex queries — single retrievals miss context, and most pipelines have no quality measurement loop.",
     solution:
-      "Two-tier router: simple queries hit direct vector search (~400ms); complex queries trigger HyDE + cross-encoder reranking (~1300ms). Real-time SSE token streaming with per-claim source citations.",
+      "Two-tier router: simple queries hit direct vector search; complex queries trigger HyDE + cross-encoder reranking. Real-time SSE token streaming with per-claim source citations.",
     impact:
-      "0.90 average across faithfulness, relevancy, and context recall on 16-experiment RAGAS sweep. Per-user API key architecture means zero credentials stored server-side.",
+      "Tuning chunk size and retrieval depth improved RAGAS score from 0.50 to 0.78 (~55%) across faithfulness, relevancy, precision, and recall on a 25-question eval set. Per-request API-key architecture threads user-supplied keys through both ingestion and querying.",
     metrics: [
-      { value: "0.90", label: "RAGAS avg score" },
-      { value: "16", label: "param sweep runs" },
-      { value: "~400ms", label: "fast-path latency" },
-      { value: "0", label: "server-side keys stored" },
+      { value: "0.78", label: "RAGAS avg score" },
+      { value: "+55%", label: "vs. untuned baseline" },
+      { value: "2", label: "retrieval strategies" },
+      { value: "25", label: "eval questions" },
     ],
     stack: [
       "Python",
@@ -283,7 +283,7 @@ Key facts about Kushal:
 - M.S. Data Science at UMBC (GPA 3.9), expected Dec 2026. Capstone supervised by Dr. Chaojie (Jay) Wang on household energy consumption forecasting; LightGBM was the best model (~41% improvement over naive baseline).
 - B.Tech CSE from MNIT Jaipur (2023), a tier-1 NIT in India.
 - 18 months at Carrier Corporation as Management Trainee (Engineering Leadership Program): C++ embedded firmware for HVAC controllers, Python tools for Wi-Fi auth/monitoring, sensor data analysis in Pandas, reusable Python libraries.
-- RAG Document Intelligence Engine — FastAPI + ChromaDB, HyDE + cross-encoder reranking, 0.90 RAGAS avg, deployed on AWS EC2/ECR with Docker, per-user API key architecture (zero server-side key storage).
+- RAG Document Intelligence Engine — FastAPI + ChromaDB, HyDE + cross-encoder reranking, RAGAS score improved from 0.50 to 0.78 (~55%) via parameter tuning, per-request API-key architecture (user supplies OpenAI/Groq keys), Docker + AWS EC2/ECR deployment scripts for on-demand hosting.
 - Other projects: CareerCoach (Next.js + Google AI full-stack platform), Leaf Disease Detection (custom QuadNET attention CNN, +8–10% accuracy over baseline).
 - Presence — AI confidence companion for people with chronic visible skin conditions (rosacea, eczema, psoriasis, severe acne). Captures face photo → Perfect Corp YCE API returns 14 real skin metrics → LLM generates situation-specific 12-min readiness plan → AI companion with full scan context. Three-provider LLM resilience via TrueFoundry gateway (Groq → Gemini → OpenAI). Custom image preprocessing pipeline to solve Perfect Corp's face-size constraint on webcam images. Deployed: Vercel + Railway. Live at presence-xi-two.vercel.app.
 - Skills: Python, C++, TypeScript, SQL · PyTorch, LightGBM, scikit-learn, RAG, HyDE, RAGAS · FastAPI, Next.js, Node.js · AWS (EC2/S3/ECR/RDS), Docker · ChromaDB, PostgreSQL.
